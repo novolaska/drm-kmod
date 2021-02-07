@@ -140,7 +140,7 @@ __active_retire(struct i915_active *ref)
 	GEM_BUG_ON(i915_active_is_idle(ref));
 
 	/* return the unused nodes to our slabcache -- flushing the allocator */
-	if (!atomic_dec_and_lock_irqsave(&ref->count, &ref->tree_lock, flags))
+	if (!atomic_dec_and_lock_irqsave(&ref->count, &ref->tree_lock, &flags))
 		return;
 
 	flags = 1;

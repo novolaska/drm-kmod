@@ -335,7 +335,7 @@ __await_execution(struct i915_request *rq,
 		cb->work.func = irq_execute_cb_hook;
 #elif defined(__FreeBSD__)
 		/* irq_work is just a workqueue for us */
-		cb->work.work.func = (work_func_t)irq_execute_cb_hook;
+		cb->work.func = (irq_work_func_t)irq_execute_cb_hook;
 #endif
 	}
 

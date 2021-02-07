@@ -105,6 +105,7 @@ do {								\
 	  memcpy(&__tmp, (ptr), sizeof(*(ptr))); __tmp; })
 
 #if _BYTE_ORDER == _LITTLE_ENDIAN
+#if defined(__FREEBSD__) && (__FREEBSD__version < 1400003)
 /* Taken from linux/include/linux/unaligned/le_struct.h. */
 struct __una_u32 { u32 x; } __packed;
 
@@ -122,6 +123,7 @@ get_unaligned_le32(const void *p)
 
 	return (__get_unaligned_cpu32((const u8 *)p));
 }
+#endif
 #else
 /* Taken from linux/include/linux/unaligned/le_byteshift.h. */
 static inline u32
