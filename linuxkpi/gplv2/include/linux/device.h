@@ -27,6 +27,7 @@ struct devres_group {
 	int				color;
 };
 
+#if 0
 static inline void *
 devm_kmalloc(struct device *dev, size_t size, gfp_t gfp)
 {
@@ -37,18 +38,24 @@ devm_kmalloc(struct device *dev, size_t size, gfp_t gfp)
 	DODGY();
 	return (kmalloc(size, gfp));
 }
+#endif /* 0 */
 
+
+/*
 static inline void *
 devm_kzalloc(struct device *dev, size_t size, gfp_t gfp)
 {
 	return devm_kmalloc(dev, size, gfp | __GFP_ZERO);
 }
+*/
 
+/*
 static inline void *
 devm_kcalloc(struct device *dev, size_t n, size_t size, gfp_t gfp)
 {
 	return devm_kmalloc(dev, n * size, gfp | __GFP_ZERO);
 }
+*/
 
 /*
  * drivers/base/devres.c - device resource management
@@ -234,11 +241,13 @@ extern int devres_release(struct device *dev, dr_release_t release,
 extern void *devres_remove(struct device *dev, dr_release_t release,
 			   dr_match_t match, void *match_data);
 
+/*
 static inline void *
 devres_alloc(dr_release_t release, size_t size, gfp_t gfp)
 {
 	return devres_alloc_node(release, size, gfp, NUMA_NO_NODE);
 }
+*/
 
 static inline int
 devres_release_group(struct device *dev, void *id)

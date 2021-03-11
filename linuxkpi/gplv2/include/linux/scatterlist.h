@@ -31,6 +31,10 @@
 
 #include_next <linux/scatterlist.h>
 
+static inline size_t
+sg_pcopy_from_buffer(struct scatterlist *sgl, unsigned int nents,
+    const void *buf, size_t buflen, off_t offset);
+#if 0
 #if __FreeBSD_version < 1400003
 static inline size_t
 sg_pcopy_from_buffer(struct scatterlist *sgl, unsigned int nents,
@@ -77,6 +81,7 @@ sg_copy_from_buffer(struct scatterlist *sgl, unsigned int nents,
 {
 	return (sg_pcopy_from_buffer(sgl, nents, buf, buflen, 0));
 }
+#endif /* 0 */
 
 static inline size_t
 sg_pcopy_to_buffer(struct scatterlist *sgl, unsigned int nents,

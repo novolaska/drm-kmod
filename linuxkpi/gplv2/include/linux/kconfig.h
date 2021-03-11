@@ -30,13 +30,17 @@
  * otherwise. For boolean options, this is equivalent to
  * IS_ENABLED(CONFIG_FOO).
  */
+/*
 #define IS_BUILTIN(option) config_enabled(option)
+*/
  
 /*
  * IS_MODULE(CONFIG_FOO) evaluates to 1 if CONFIG_FOO is set to 'm', 0
  * otherwise.
  */
+/*
 #define IS_MODULE(option) config_enabled(option##_MODULE)
+*/
 
 /*
  * IS_REACHABLE(CONFIG_FOO) evaluates to 1 if the currently compiled
@@ -44,15 +48,19 @@
  * This is similar to IS_ENABLED(), but returns false when invoked from
  * built-in code when CONFIG_FOO is set to 'm'.
  */
+/*
 #define IS_REACHABLE(option) (config_enabled(option) || \
 		 (config_enabled(option##_MODULE) && config_enabled(MODULE)))
+*/
 
 /*
  * IS_ENABLED(CONFIG_FOO) evaluates to 1 if CONFIG_FOO is set to 'y' or 'm',
  * 0 otherwise.
  */
+/*
 #define IS_ENABLED(option) \
 	(IS_BUILTIN(option) || IS_MODULE(option))
+*/
 
 #endif /* __LINUX_KCONFIG_H */
 #endif

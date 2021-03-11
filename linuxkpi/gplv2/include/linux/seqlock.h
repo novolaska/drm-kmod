@@ -55,7 +55,9 @@ typedef struct seqcount {
 
 
 #if __FreeBSD_version < 1400003
+#if 0
 #define lockdep_init_map(a, b, c, d)
+#endif /* 0 */
 #endif
 
 static inline void __seqcount_init(seqcount_t *s, const char *name,

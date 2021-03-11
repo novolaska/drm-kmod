@@ -3,6 +3,7 @@
 
 #include_next <linux/kobject.h>
 
+#if 0
 #if __FreeBSD_version < 1400003
 enum kobject_action {
 	KOBJ_ADD,
@@ -16,6 +17,7 @@ enum kobject_action {
 	KOBJ_MAX
 };
 
+/*
 static inline int
 kobject_uevent_env(struct kobject *kobj __unused,
     enum kobject_action action __unused, char *envp[] __unused)
@@ -23,6 +25,7 @@ kobject_uevent_env(struct kobject *kobj __unused,
 
 	return (0);
 }
+*/
 #endif
-
+#endif /* 0 */
 #endif

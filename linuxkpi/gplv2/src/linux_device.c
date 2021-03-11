@@ -107,6 +107,7 @@ devres_free(void *res)
 	}
 }
 
+/*
 void
 pci_dev_put(struct pci_dev *pdev)
 {
@@ -118,4 +119,5 @@ pci_dev_put(struct pci_dev *pdev)
 	free(pdev->bus, M_DEVBUF);
 	free(pdev, M_DEVBUF);
 }
+*/
 #endif
